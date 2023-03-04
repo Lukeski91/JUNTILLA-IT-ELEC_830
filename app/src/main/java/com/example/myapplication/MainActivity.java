@@ -30,18 +30,18 @@ public class MainActivity extends AppCompatActivity{
 
 
         // Initializing a String Array
-        String[] plants = new String[]{
+        String[] GPU = new String[]{
                 "Select an item...",
-                "California sycamore",
-                "Mountain mahogany",
-                "Butterfly weed",
-                "Carrot weed"
+                "GTX 720ti",
+                "GTX 1050",
+                "GTX 1660",
+                "GTX 1030ti"
         };
 
 
         // Convert array to a list
         List<String> plantsList = new ArrayList<>
-                (Arrays.asList(plants));
+                (Arrays.asList(GPU));
 
 
         // Initializing an ArrayAdapter
