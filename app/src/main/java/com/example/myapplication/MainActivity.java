@@ -2,14 +2,21 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
+import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity{
 
@@ -18,20 +25,97 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.v(TAG, "This is a verbose log,");
-        Log.d(TAG, "This is a debug log,");
-        Log.i(TAG, "This is a intro log,");
-        Log.w(TAG, "This is a warn log,");
-        Log.e(TAG, "This is a error log/");
+        // Get the widgets reference from XML layout
+        Spinner spinner = findViewById(R.id.spinner);
 
-        Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+
+        // Initializing a String Array
+        String[] plants = new String[]{
+                "Select an item...",
+                "California sycamore",
+                "Mountain mahogany",
+                "Butterfly weed",
+                "Carrot weed"
+        };
+
+
+        // Convert array to a list
+        List<String> plantsList = new ArrayList<>
+                (Arrays.asList(plants));
+
+
+        // Initializing an ArrayAdapter
+        ArrayAdapter<String> spinnerArrayAdapter
+                = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_dropdown_item_1line,
+                plantsList
+        ){
             @Override
-            public void onClick(View v) {
-                Log.i(TAG, "Button Clicker");
-                //Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-                //startActivity(intent);
+            public boolean isEnabled(int position){
+                // Disable the first item from Spinner
+                // First item will be use for hint
+                return position != 0;
             }
-        });
+            @Override
+            public View getDropDownView(
+                    int position, View convertView,
+                    @NonNull ViewGroup parent) {
+
+                // Get the item view
+                View view = super.getDropDownView(
+                        position, convertView, parent);
+                TextView textView = (TextView) view;
+                if(position == 0){
+                    // Set the hint text color gray
+                    textView.setTextColor(Color.GRAY);
+                }
+                else { textView.setTextColor(Color.BLACK); }
+                return view;
+            }
+        };
+
+
+        // Set the drop down view resource
+        spinnerArrayAdapter.setDropDownViewResource(
+                android.R.layout.simple_dropdown_item_1line
+        );
+
+
+        // Spinner on item selected listener
+        spinner.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+
+                    @Override
+                    public void onItemSelected(
+                            AdapterView<?> parent, View view,
+                            int position, long id) {
+
+                        // Get the spinner selected item text
+                        String selectedItemText = (String) parent
+                                .getItemAtPosition(position);
+
+                        // If user change the default selection
+                        // First item is disable and
+                        // it is used for hint
+                        if(position > 0){
+                            // Notify the selected item text
+                            Toast.makeText(
+                                    getApplicationContext(),
+                                    "Selected : "
+                                            + selectedItemText,
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(
+                            AdapterView<?> parent) {
+                    }
+                });
+
+
+        // Finally, data bind the spinner object with adapter
+        spinner.setAdapter(spinnerArrayAdapter);
     }
 }
