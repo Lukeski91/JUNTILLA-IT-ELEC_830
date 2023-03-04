@@ -40,17 +40,12 @@ public class MainActivity extends AppCompatActivity{
 
 
         // Convert array to a list
-        List<String> plantsList = new ArrayList<>
+        List<String> GPUList = new ArrayList<>
                 (Arrays.asList(GPU));
 
 
         // Initializing an ArrayAdapter
-        ArrayAdapter<String> spinnerArrayAdapter
-                = new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_dropdown_item_1line,
-                plantsList
-        ){
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,GPUList){
             @Override
             public boolean isEnabled(int position){
                 // Disable the first item from Spinner
