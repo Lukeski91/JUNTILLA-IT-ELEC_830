@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         case R.id.copy:
             Toast.makeText(this, "Copied", Toast.LENGTH_SHORT).show();
             break;
-
         }
         return super.onOptionsItemSelected(item);
     }
