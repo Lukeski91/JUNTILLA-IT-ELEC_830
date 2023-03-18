@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             dialogFragment.show(getSupportFragmentManager(), "My fragment");
             break;
         case R.id.copy:
-            Toast.makeText(this, "Copy Clicked", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Copied", Toast.LENGTH_SHORT).show();
             break;
 
         }
