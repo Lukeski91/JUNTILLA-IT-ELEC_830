@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         actionBar.setSubtitle("Design a custom Action bar");
 
-        actionBar.setIcon(R.mipmap.ic_launcher);
+        actionBar.setIcon(R.mipmap.ic_dog_icon);
 
         actionBar.setDisplayUseLogoEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
