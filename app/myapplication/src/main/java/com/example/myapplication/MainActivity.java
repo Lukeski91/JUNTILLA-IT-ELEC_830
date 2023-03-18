@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             showAlertDialog();
             break;
         case R.id.refresh:
-            DialogFragment dialogFragment=new DialogFragment();
+            DialogFragment dialogFragment = new DialogFragment();
             dialogFragment.show(getSupportFragmentManager(), "My fragment");
             break;
         case R.id.copy:
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void showAlertDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Alert!").setMessage("Danger you are failing!");
+        builder.setTitle("Alert!").setMessage("Danger! ! ! You are failing!");
 
         builder.setPositiveButton("Okay!", new DialogInterface.OnClickListener() {
             @Override
