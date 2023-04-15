@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.example.myapplication.databinding.ActivitySecondBinding;
 
+//import org.w3c.dom.Text;
+
 public class SecondActivity extends AppCompatActivity {
 
     private ActivitySecondBinding binding;
@@ -19,10 +21,11 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        //TextView textView = (TextView) findViewById(R.id.text);
+        TextView textView = (TextView) findViewById(R.id.textView2);
 
         Intent intent = getIntent();
         String fromMain = getIntent().getStringExtra("PASS_ME");
+        textView.setText(fromMain);
     }
 
 }
