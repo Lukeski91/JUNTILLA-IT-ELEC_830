@@ -17,10 +17,10 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_AGE = "age";
 
     private static final String CREATE_TABLE =
-            "CREATE TABLE" + TABLE_NAME + " (" +
-                    COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    COLUMN_NAME + " TEXT, " +
-                    COLUMN_AGE + " INTEGER);";
+            "CREATE TABLE " + TABLE_NAME + " ("+
+            COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT," +
+            COLUMN_NAME + " TEXT, " +
+            COLUMN_AGE + " INTEGER);";
 
     public MyDatabaseHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -33,7 +33,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
-        db.execSQL("DROP TABLE IF EXISTS" + TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
 
@@ -83,7 +83,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     public void deleteAllData(){
         SQLiteDatabase db = getReadableDatabase();
-        db.execSQL("DROP TABLE IF EXISTS" + TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
         db.close();
     }
