@@ -62,6 +62,14 @@ public class MainActivity extends AppCompatActivity {
 
         editor.remove("name");
         editor.apply();
+        //Get values from the shared preferences
+        name = prefs.getString("name", "");
+        age = prefs.getInt("age", 0);
+        isStudent = prefs.getBoolean("is_student", false);
+        Log.d("MainActivity", name);
+        Log.d("MainActivity", String.valueOf(age));
+        Log.d("MainActivity", String.valueOf(isStudent));
+
         //Clear shared preferences
         editor.clear();
         editor.commit();
@@ -73,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("MainActivity", name);
         Log.d("MainActivity", String.valueOf(age));
         Log.d("MainActivity", String.valueOf(isStudent));
+
     }
 
     @SuppressLint("Range")
